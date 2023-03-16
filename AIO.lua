@@ -75,7 +75,7 @@ end
 
 
 
-function recycle_all_item(t)
+function recycle_all_item()
     for k, v in pairs(GetInventory()) do
         SendPacket(2, "action|dialog_return\ndialog_name|trash\nitem_trash|".. v.id .. "|\nitem_count|"..v.amount.."\n") 
     end
@@ -92,7 +92,7 @@ end
 
 
 
-function drop_all_item(t)
+function drop_all_item()
     for k, v in pairs(GetInventory()) do
         SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|".. v.id .. "|\nitem_count|"..v.amount.."\n") 
     end
