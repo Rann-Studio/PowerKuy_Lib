@@ -75,6 +75,14 @@ end
 
 
 
+function recycle_all_item(t)
+    for k, v in pairs(GetInventory()) do
+        SendPacket(2, "action|dialog_return\ndialog_name|trash\nitem_trash|".. v.id .. "|\nitem_count|"..v.amount.."\n") 
+    end
+end
+
+
+
 function drop_item(t)
     local item_id = t[1] or t.item_id or os.exit()
     local amount = t[2] or t.amount or os.exit()
@@ -83,9 +91,13 @@ function drop_item(t)
 end
 
 
-function get_all_backpack()
-    
+
+function drop_all_item(t)
+    for k, v in pairs(GetInventory()) do
+        SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|".. v.id .. "|\nitem_count|"..v.amount.."\n") 
+    end
 end
+
 
 
 function show_notification(t)
