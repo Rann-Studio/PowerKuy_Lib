@@ -1,5 +1,5 @@
 function add_magplant(t)
-    local position = t[1] or t.position or os.exit()
+    local position = t[1] or t.position or exit_message{message = "position is not defined"}
     local offset = t[2] or t.offset or nil
 
     local magplant_x
@@ -29,7 +29,7 @@ end
 
 
 function retrieve_magplant(t)
-    local position = t[1] or t.position or os.exit()
+    local position = t[1] or t.position or exit_message{message = "position is not defined"}
     local offset = t[2] or t.offset or nil
 
     local magplant_x
@@ -59,7 +59,7 @@ end
 
 
 function find_item(t)
-    local item_id = t[1] or t.item_id or os.exit()
+    local item_id = t[1] or t.item_id or exit_message{message = "item id is not defined"}
 
     SendPacket(2, "action|dialog_return\ndialog_name|item_search\n" .. item_id .. "|1\n")
 end
@@ -67,8 +67,8 @@ end
 
 
 function recycle_item(t)
-    local item_id = t[1] or t.item_id or os.exit()
-    local amount = t[2] or t.amount or os.exit()
+    local item_id = t[1] or t.item_id or exit_message{message = "item id is not defined"}
+    local amount = t[2] or t.amount or exit_message{message = "amount is not defined"}
 
     SendPacket(2, "action|dialog_return\ndialog_name|trash\nitem_trash|".. item_id .. "|\nitem_count|"..amount.."\n")
 end
@@ -84,8 +84,8 @@ end
 
 
 function drop_item(t)
-    local item_id = t[1] or t.item_id or os.exit()
-    local amount = t[2] or t.amount or os.exit()
+    local item_id = t[1] or t.item_id or exit_message{message = "item id is not defined"}
+    local amount = t[2] or t.amount or exit_message{message = "amount is not defined"}
 
     SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|".. item_id .. "|\nitem_count|"..amount.."\n")
 end
@@ -113,4 +113,12 @@ function show_notification(t)
         v4 = 0
     }
     SendVariant(notification)
+end
+
+
+
+function exit_message(t)
+    local message = t[1] or t.message or "Thanks for using this library"
+    LogToConsole(message)
+    return false
 end
