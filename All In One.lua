@@ -77,7 +77,8 @@ end
 
 function recycle_all_item()
     for k, v in pairs(GetInventory()) do
-        SendPacket(2, "action|dialog_return\ndialog_name|trash\nitem_trash|".. v.id .. "|\nitem_count|"..v.amount.."\n") 
+        SendPacket(2, "action|dialog_return\ndialog_name|trash\nitem_trash|".. v.id .. "|\nitem_count|"..v.amount.."\n")
+        Sleep(300)
     end
 end
 
