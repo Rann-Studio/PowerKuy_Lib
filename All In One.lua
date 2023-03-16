@@ -102,7 +102,7 @@ end
 
 function show_notification(t)
     local icon = t[1] or t.icon or "interface/large/adventure.rttex"
-    local message = t[2] or t.message or "Hello Growtopians"
+    local message = t[2] or t.message or  exit_message{message = "message is not defined"}
     local sound = t[3] or t.sound or "audio/gong.wav"
 
     local notification = {
