@@ -53,7 +53,7 @@ function retrieve_magplant(t)
     
     end
 
-    -- SendPacket(2, "action|dialog_return\ndialog_name|magplant_edit\nx|" .. magplant_x .. "|\ny|" .. magplant_y .."|\nbuttonClicked|additems\n")
+    SendPacket(2, "action|dialog_return\ndialog_name|magplant_edit\nx|" .. magplant_x .. "|\ny|" .. magplant_y .."|\nbuttonClicked|withdraw\n")
 end
 
 
@@ -68,14 +68,18 @@ end
 
 function recycle_item(t)
     local item_id = t[1] or t.item_id or os.exit()
+    local amount = t[2] or t.amount or os.exit()
 
-    -- SendPacket(2, "action|dialog_return\ndialog_name|item_search\n" .. item_id .. "|1\n")
+    SendPacket(2, "action|dialog_return\ndialog_name|trash\nitem_trash|".. item_id .. "|\nitem_count|"..amount.."\n")
 end
 
 
 
 function drop_item(t)
-    
+    local item_id = t[1] or t.item_id or os.exit()
+    local amount = t[2] or t.amount or os.exit()
+
+    SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|".. item_id .. "|\nitem_count|"..amount.."\n")
 end
 
 
