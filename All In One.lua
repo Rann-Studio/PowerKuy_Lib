@@ -7,14 +7,14 @@ function add_magplant(t)
 
     if (position == "top") then
         magplant_x = (GetLocal().posX // 32)
-        magplant_y = ((GetLocal().posY // 32) + 1) + ((offset ~= nil) and offset or 0)
+        magplant_y = ((GetLocal().posY // 32) - 1) - ((offset ~= nil) and offset or 0)
         
     elseif (position == "bottom") then
         magplant_x = (GetLocal().posX // 32)
-        magplant_y = ((GetLocal().posY // 32) - 1) + ((offset ~= nil) and offset or 0)
+        magplant_y = ((GetLocal().posY // 32) + 1) + ((offset ~= nil) and offset or 0)
         
     elseif (position == "left") then
-        magplant_y = ((GetLocal().posX // 32) - 1) + ((offset ~= nil) and offset or 0)
+        magplant_y = ((GetLocal().posX // 32) - 1) - ((offset ~= nil) and offset or 0)
         magplant_x = (GetLocal().posY // 32)
         
     elseif (position == "right") then
@@ -37,14 +37,14 @@ function retrieve_magplant(t)
 
     if (position == "top") then
         magplant_x = (GetLocal().posX // 32)
-        magplant_y = ((GetLocal().posY // 32) + 1) + ((offset ~= nil) and offset or 0)
+        magplant_y = ((GetLocal().posY // 32) - 1) - ((offset ~= nil) and offset or 0)
         
     elseif (position == "bottom") then
         magplant_x = (GetLocal().posX // 32)
-        magplant_y = ((GetLocal().posY // 32) - 1) + ((offset ~= nil) and offset or 0)
+        magplant_y = ((GetLocal().posY // 32) + 1) + ((offset ~= nil) and offset or 0)
         
     elseif (position == "left") then
-        magplant_y = ((GetLocal().posX // 32) - 1) + ((offset ~= nil) and offset or 0)
+        magplant_y = ((GetLocal().posX // 32) - 1) - ((offset ~= nil) and offset or 0)
         magplant_x = (GetLocal().posY // 32)
         
     elseif (position == "right") then
