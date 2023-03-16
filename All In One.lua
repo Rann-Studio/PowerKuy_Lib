@@ -95,7 +95,8 @@ end
 
 function drop_all_item()
     for k, v in pairs(GetInventory()) do
-        SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|".. v.id .. "|\nitem_count|"..v.amount.."\n") 
+        SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|".. v.id .. "|\nitem_count|"..v.amount.."\n")
+        Sleep(300)
     end
 end
 
