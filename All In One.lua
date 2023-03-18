@@ -118,6 +118,25 @@ function show_notification(t)
 end
 
 
+function harvest(t)
+    local seed_id = t[0] or t.seed_id or exit_message("seed id is not defined")
+    
+    for _, tile in pairs(GetTiles()) do
+        local now_tile = GetTile(tile.x, tile.y)
+        if (now_tile.fg == seed_id and now_tile.readyharvest == true) then
+            pkt = {}
+            pkt.type = 3
+            pkt.px = GetLocal().posX // 32
+            pkt.py = GetLocal().posX // 32
+            pkt.x = GetLocal().posX
+            pkt.y = GetLocal().posY
+            pkt.value = 18
+            SendPacketRaw(false, pkt)
+        end
+    end
+end
+
+
 
 function exit_message(t)
     local message = t[1] or t.message or "Thanks for using this library"
