@@ -60,7 +60,7 @@ end
 
 function break_item(t)
     local x = t[1] or t.x or exit_message{message="x coordinate is not defined"}
-    local y = t[1] or t.y or exit_message{message="y coordinate is not defined"}
+    local y = t[2] or t.y or exit_message{message="y coordinate is not defined"}
 
     pkt = {}
     pkt.px = x;
