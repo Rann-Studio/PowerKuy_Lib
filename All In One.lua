@@ -146,6 +146,38 @@ end
 
 
 
+function grind_food(t)
+    local position = t[1] or t.position or exit_message{message = "position is not defined"}
+    local offset = t[2] or t.offset or nil
+    local item_id = t[3] or t.item_id or exit_message{message = "item id is not defined"}
+    local amount = t[4] or t.amount or exit_message{message = "amount id is not defined"}
+
+    local grinder_x
+    local grinder_y
+
+    if (position == "top") then
+        grinder_x = (GetLocal().posX // 32)
+        grinder_y = ((GetLocal().posY // 32) - 1) - ((offset ~= nil) and offset or 0)
+        
+    elseif (position == "bottom") then
+        grinder_x = (GetLocal().posX // 32)
+        grinder_y = ((GetLocal().posY // 32) + 1) + ((offset ~= nil) and offset or 0)
+        
+    elseif (position == "left") then
+        grinder_x = ((GetLocal().posX // 32) - 1) - ((offset ~= nil) and offset or 0)
+        grinder_y = (GetLocal().posY // 32)
+        
+    elseif (position == "right") then
+        grinder_x = ((GetLocal().posX // 32) + 1) + ((offset ~= nil) and offset or 0)
+        grinder_y = (GetLocal().posY // 32)
+    
+    end
+    
+    SendPacket(2, "action|dialog_return\ndialog_name|grinder\nx|".. grinder_x .. "|\ny|"..grinder_y.."|\nitemID|"..item_id.."|\namount|"..amount.."\n")
+end
+
+
+
 function show_notification(t)
     local icon = t[1] or t.icon or "interface/large/adventure.rttex"
     local message = t[2] or t.message or  exit_message{message = "message is not defined"}
