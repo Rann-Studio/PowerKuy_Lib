@@ -212,9 +212,9 @@ end
 
 
 function auto_suck_bgems(t)
-    local second = t[2] or t.second or 0
-    local minute = t[3] or t.minute or 0
-    local hour = t[4] or t.hour or 0
+    local second = t[1] or t.second or 0
+    local minute = t[2] or t.minute or 0
+    local hour = t[3] or t.hour or 0
 
     local delay = 1000 * (second + 60 * (minute + 60 * hour))
     while true do
