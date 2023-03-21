@@ -61,12 +61,13 @@ end
 function break_item(t)
     local x = t[1] or t.x or exit_message{message="x coordinate is not defined"}
     local y = t[2] or t.y or exit_message{message="y coordinate is not defined"}
-
+    
+    local nx, ny = GetLocal().posX, GetLocal().posY
     pkt = {}
     pkt.px = x;
     pkt.py = y;
-    pkt.x = x * 32;
-    pkt.y = (y - 1) * 32;
+    pkt.x = nx;
+    pkt.y = ny;
     pkt.type = 3;
     pkt.value = 18;
     SendPacketRaw(false, pkt);
@@ -78,12 +79,13 @@ function place_item(t)
     local x = t[1] or t.x or exit_message{message="x coordinate is not defined"}
     local y = t[2] or t.y or exit_message{message="y coordinate is not defined"}
     local item_id = t[3] or t.item_id or exit_message{message="item id is not defined"}
-
+    
+    local nx, ny = GetLocal().posX, GetLocal().posY
     pkt = {}
     pkt.px = x;
     pkt.py = y;
-    pkt.x = x * 32;
-    pkt.y = (y - 1) * 32;
+    pkt.x = nx;
+    pkt.y = ny;
     pkt.type = 3;
     pkt.value = item_id;
     SendPacketRaw(false, pkt);
@@ -116,7 +118,7 @@ function clear_island()
                 local tile = GetTile(x, y)
                 if (tile.fg == 12988) or (tile.fg == 12986) or (tile.bg == 14 and tile.fg ~= 8) or (tile.fg == 1104) or (tile.bg == 1102) then
                     if (FindPath(tile.x, tile.y - 1) == false) then
-                        break_item{ x= tile.x, y = tile.y}
+                        break_island{ x= tile.x, y = tile.y}
                         break
                     end
                 end
@@ -124,7 +126,7 @@ function clear_island()
                 local tile = GetTile(199 - x, y)
                 if (tile.fg == 12988) or (tile.fg == 12986) or (tile.bg == 14  and tile.fg ~= 8) or (tile.fg == 1104) or (tile.bg == 1102) then
                     if (FindPath(tile.x, tile.y - 1) == false) then
-                        break_item{x= tile.x, y = tile.y}
+                        break_island{x= tile.x, y = tile.y}
                         break
                     end
                 end
