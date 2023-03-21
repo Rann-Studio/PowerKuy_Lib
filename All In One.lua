@@ -211,6 +211,20 @@ end
 
 
 
+function auto_suck_bgems(t)
+    local second = t[2] or t.second or 0
+    local minute = t[3] or t.minute or 0
+    local hour = t[4] or t.hour or 0
+
+    local delay = 1000 * (second + 60 * (minute + 60 * hour))
+    while true do
+        SendPacket(2, "action|dialog_return\ndialog_name|social\nbuttonClicked|bgem_suckall\n")
+        Sleep(delay)
+    end
+end
+
+
+
 function show_notification(t)
     local icon = t[1] or t.icon or "interface/large/adventure.rttex"
     local message = t[2] or t.message or  exit_message{message = "message is not defined"}
