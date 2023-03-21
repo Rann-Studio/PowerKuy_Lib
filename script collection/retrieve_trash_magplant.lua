@@ -4,7 +4,7 @@
 local itemID = 1656
 local magPos = "top"
 local magOffset = 1
-local itemTrash = 250
+local amountTrash = 250
 
 
 function retrieve_magplant(t)
@@ -55,6 +55,6 @@ while true do
   retrieve_magplant{position = magPos, offset = magOffset}
   Sleep(1000)
 
-  recycle_item{item_id = itemID, amount = itemTrash }
+  recycle_item{item_id = itemID, amount = amountTrash }
   Sleep(1000)
 end
