@@ -1,9 +1,9 @@
 -- Script by : Rann#6485
 -- Do not trade this script!
 
-local itemID = 1656
 local magPos = "top"
 local magOffset = 1
+local itemID = 1656
 local amountTrash = 250
 
 
