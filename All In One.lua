@@ -70,6 +70,39 @@ function break_item(t)
     pkt.type = 3;
     pkt.value = 18;
     SendPacketRaw(false, pkt);
+end
+
+
+
+function place_item(t)
+    local x = t[1] or t.x or exit_message{message="x coordinate is not defined"}
+    local y = t[2] or t.y or exit_message{message="y coordinate is not defined"}
+    local item_id = t[3] or t.item_id or exit_message{message="item id is not defined"}
+
+    pkt = {}
+    pkt.px = x;
+    pkt.py = y;
+    pkt.x = x * 32;
+    pkt.y = (y - 1) * 32;
+    pkt.type = 3;
+    pkt.value = item_id;
+    SendPacketRaw(false, pkt);
+end
+
+
+
+function break_island(t)
+    local x = t[1] or t.x or exit_message{message="x coordinate is not defined"}
+    local y = t[2] or t.y or exit_message{message="y coordinate is not defined"}
+
+    pkt = {}
+    pkt.px = x;
+    pkt.py = y;
+    pkt.x = x * 32;
+    pkt.y = (y - 1) * 32;
+    pkt.type = 3;
+    pkt.value = 18;
+    SendPacketRaw(false, pkt);
     Sleep(200)
     clear_island()
 end
