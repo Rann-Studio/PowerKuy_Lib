@@ -1,5 +1,7 @@
 -- Script by : Rann#6485
 -- Do not trade this script!
+-- More information? read wiki!
+-- https://github.com/Rann-Studio/PowerKuy_Lib/wiki
 
 local itemID = 1656
 local magPos = "top"
